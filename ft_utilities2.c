@@ -6,13 +6,13 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 15:41:59 by anporced          #+#    #+#             */
-/*   Updated: 2023/10/19 17:27:25 by anporced         ###   ########.fr       */
+/*   Updated: 2023/10/19 18:11:17 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t	ft_nbrlen_unsigned(unsigned int nbr, int base)
+size_t	ft_nbrlen_unsigned(unsigned long long nbr, int base)
 {
 	size_t	len;
 
@@ -41,6 +41,9 @@ int	ft_putnbr_unsigned(unsigned int nb)
 
 int	ft_putnbr_hex(unsigned long long nbr)
 {
+	int	len;
+
+	len = ft_nbrlen_unsigned(nbr, 16);
 	if (nbr >= 16)
 	{
 		ft_putnbr_hex(nbr / 16);
@@ -52,7 +55,7 @@ int	ft_putnbr_hex(unsigned long long nbr)
 			nbr += 'a' - '9' - 1;
 		ft_putchar(nbr + '0');
 	}
-	return (ft_nbrlen_unsigned(nbr, 16));
+	return (len);
 }
 
 int	ft_putnbr_x(unsigned long int nbr, int check)

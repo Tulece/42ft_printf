@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:32:32 by anporced          #+#    #+#             */
-/*   Updated: 2023/10/19 17:26:05 by anporced         ###   ########.fr       */
+/*   Updated: 2023/10/19 18:12:55 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,17 +58,15 @@ int	ft_printf(char const *str, ...)
 	va_end(arg);
 	return (print_len);
 }
-#include <limits.h>
+// int	main(void)
+// {
+// 	int	*ptr;
+// 	int	x;
 
-int	main(void)
-{
-	int	*ptr;
-	int	x;
-
-	ptr = &x;
-	ft_printf("%p\n", LONG_MIN);
-	printf("%p\n", LONG_MIN);
-	ft_printf("%d\n", ft_printf("%p\n", LONG_MIN));
-	printf("%d\n", printf("%p\n", LONG_MIN));
-	return (0);
-}
+// 	ptr = &x;
+// 	ft_printf("%p\n", LONG_MIN);
+// 	printf("%p\n", LONG_MIN);
+// 	ft_printf("%d\n", ft_printf("%p\n", LONG_MIN));
+// 	printf("%d\n", printf("%p\n", LONG_MIN));
+// 	return (0);
+// }
