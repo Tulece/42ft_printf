@@ -1,6 +1,6 @@
 NAME = libftprintf.a
 
-SRCS = *.c
+SRCS = ft_printf.c ft_utilities.c ft_utilities2.c
 
 # BSRCS =
 
@@ -30,7 +30,7 @@ fclean:    clean
 
 re: fclean all
 
-bonus: ${BOBJ}
+# bonus: ${BOBJ}
 	ar -rcs ${NAME} ${BOBJ}
 
-.PHONY: all bonus clean fclean re
+.PHONY: all clean fclean re

@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:32:32 by anporced          #+#    #+#             */
-/*   Updated: 2023/10/19 14:14:10 by anporced         ###   ########.fr       */
+/*   Updated: 2023/10/19 17:26:05 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 int	ft_format(va_list arg, const char format)
 {
-	int	len;
-
-	len = 0;
 	if (format == 'c')
 		return (ft_putchar(va_arg(arg, int)));
 	else if (format == 's')
@@ -24,15 +21,16 @@ int	ft_format(va_list arg, const char format)
 	else if (format == 'd' || format == 'i')
 		return (ft_putnbr(va_arg(arg, int)));
 	else if (format == '%')
-		return (ft_putchar(va_arg(arg, int)));
+		return (ft_putchar('%'));
 	else if (format == 'x')
-		return (ft_putnbr_xX(va_arg(arg, unsigned int), 1));
+		return (ft_putnbr_x(va_arg(arg, unsigned int), 1));
 	else if (format == 'X')
-		return (ft_putnbr_xX(va_arg(arg, unsigned int), 0));
+		return (ft_putnbr_x(va_arg(arg, unsigned int), 0));
 	else if (format == 'u')
 		return (ft_putnbr_unsigned(va_arg(arg, unsigned int)));
 	else if (format == 'p')
-		return (ft_putptr(va_arg(arg, unsigned long int)));
+		return (ft_putptr(va_arg(arg, unsigned long long)));
+	return (0);
 }
 
 int	ft_printf(char const *str, ...)
@@ -60,14 +58,17 @@ int	ft_printf(char const *str, ...)
 	va_end(arg);
 	return (print_len);
 }
+#include <limits.h>
 
 int	main(void)
 {
-	int x = 42;
+	int	*ptr;
+	int	x;
 
-	ft_printf("%X\n", x);
-	printf("%X\n", x);
-	ft_printf("%x\n", x);
-	printf("%x\n", x);
+	ptr = &x;
+	ft_printf("%p\n", LONG_MIN);
+	printf("%p\n", LONG_MIN);
+	ft_printf("%d\n", ft_printf("%p\n", LONG_MIN));
+	printf("%d\n", printf("%p\n", LONG_MIN));
 	return (0);
 }

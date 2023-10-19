@@ -6,7 +6,7 @@
 /*   By: anporced <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 15:41:59 by anporced          #+#    #+#             */
-/*   Updated: 2023/10/19 14:17:01 by anporced         ###   ########.fr       */
+/*   Updated: 2023/10/19 17:27:25 by anporced         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ int	ft_putnbr_unsigned(unsigned int nb)
 	return (ft_nbrlen_unsigned(nb, 10));
 }
 
-int	ft_putnbr_hex(unsigned long int nbr)
+int	ft_putnbr_hex(unsigned long long nbr)
 {
-	if (nbr > 16)
+	if (nbr >= 16)
 	{
 		ft_putnbr_hex(nbr / 16);
 		ft_putnbr_hex(nbr % 16);
@@ -55,12 +55,12 @@ int	ft_putnbr_hex(unsigned long int nbr)
 	return (ft_nbrlen_unsigned(nbr, 16));
 }
 
-int	ft_putnbr_xX(unsigned long int nbr, int check)
+int	ft_putnbr_x(unsigned long int nbr, int check)
 {
-	if (nbr > 16)
+	if (nbr >= 16)
 	{
-		ft_putnbr_xX(nbr / 16, check);
-		ft_putnbr_xX(nbr % 16, check);
+		ft_putnbr_x(nbr / 16, check);
+		ft_putnbr_x(nbr % 16, check);
 	}
 	else
 	{
@@ -70,18 +70,20 @@ int	ft_putnbr_xX(unsigned long int nbr, int check)
 			ft_putchar(nbr + 'A' - 10);
 		else
 			ft_putchar(nbr + '0');
-
 	}
 	return (ft_nbrlen_unsigned(nbr, 16));
 }
 
-int	ft_putptr(unsigned long int ptr)
+int	ft_putptr(unsigned long long ptr)
 {
+	int	i;
+
+	i = 0;
 	if (!ptr)
 	{
-		ft_putstr("(nil)");
-		return (5);
+		return (ft_putstr("(nil)"));
 	}
-	ft_putstr("0x");
-	return (ft_putnbr_hex(((unsigned long int) ptr)) + 2);
+	i += ft_putstr("0x");
+	i += ft_putnbr_hex(ptr);
+	return (i);
 }
